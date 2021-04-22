@@ -204,4 +204,13 @@ public class PlayerStats : MonoBehaviour
             currentY += 30;
         }
     }
+
+    public void StatUp(string name)
+    {
+        BaseStats stat = (BaseStats) Enum.Parse(typeof(BaseStats), name);
+
+       ChangeStats(stat, 1);
+
+        
+    }
 }
