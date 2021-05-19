@@ -1369,7 +1369,7 @@ MonoBehaviour:
     minApproval: -1
     changeApproval: 0
     quest:
-    - {fileID: 0}
+    - {fileID: 984042383}
     mustHaveQuest: []
     completeQuests: []
     nextDialogue: {fileID: 284562264}
@@ -1381,6 +1381,15 @@ MonoBehaviour:
     mustHaveQuest: []
     completeQuests: []
     nextDialogue: {fileID: 284562266}
+  - statement: Complete apple quest
+    response: Thank you
+    minApproval: -1
+    changeApproval: 0.3
+    quest: []
+    mustHaveQuest: []
+    completeQuests:
+    - {fileID: 984042383}
+    nextDialogue: {fileID: 0}
   firstDialogue: 1
 --- !u!4 &284562263
 Transform:
@@ -4015,8 +4024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30cb611139093147beea28d6b3cfa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentQuests:
-  - {fileID: 0}
+  CurrentQuests: []
 --- !u!4 &984042382
 Transform:
   m_ObjectHideFlags: 0

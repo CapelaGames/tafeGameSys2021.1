@@ -61,6 +61,9 @@ public class FactionsManager2 : MonoBehaviour
 
         }
         return null;
+
+
+
     }
 
     public float? FactionsApproval(string factionName)
