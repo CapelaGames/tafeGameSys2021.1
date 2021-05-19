@@ -89,6 +89,7 @@ namespace Quests
         void Start()
         {
             // Find all the quests in the game
+            quests.Clear();
             quests.AddRange(FindObjectsOfType<Quest>());
 
             // Foreach function is specific to list types that just functions
