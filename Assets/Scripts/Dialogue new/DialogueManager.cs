@@ -75,10 +75,36 @@ public class DialogueManager : MonoBehaviour
 
     private void ButtonPressed(int index)
     {
-        FactionsManager.instance.FactionsApproval(loadedDialogue.faction,
+        //changes approval
+        FactionsManager2.instance.FactionsApproval(loadedDialogue.faction,
             loadedDialogue.dialogueOptions[index].changeApproval);
 
 
+        //adds quest
+        if (loadedDialogue.dialogueOptions[index].quest.Length > 0)
+        {
+            foreach (Quest quest in loadedDialogue.dialogueOptions[index].quest)
+            {
+                if (quest != null)
+                {
+                    QuestManager.instance.AccpectQuest(quest);
+                }
+            }
+        }
+
+        //complete quest
+        if (loadedDialogue.dialogueOptions[index].completeQuests.Length > 0)
+        {
+            foreach (Quest quest in loadedDialogue.dialogueOptions[index].completeQuests)
+            {
+                if(quest != null)
+                {
+                    QuestManager.instance.CompleteQuest(quest);
+                }
+            }
+        }
+
+        //moves on to the next dialogue
         if (loadedDialogue.dialogueOptions[index].nextDialogue != null)
         {
             LoadDialogue(loadedDialogue.dialogueOptions[index].nextDialogue);

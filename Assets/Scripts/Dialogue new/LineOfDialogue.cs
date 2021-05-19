@@ -10,6 +10,10 @@ public class LineOfDialogue
     public float minApproval = -1f;
     public float changeApproval = 0f;
 
+    public Quest[] quest;
+    public Quest[] mustHaveQuest;//come back to it
+    public Quest[] completeQuests;
+
 
     public Dialogue nextDialogue;
 
