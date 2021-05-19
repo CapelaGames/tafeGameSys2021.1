@@ -75,7 +75,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ButtonPressed(int index)
     {
-        FactionsManager.instance.FactionsApproval(loadedDialogue.faction,
+        FactionsManager2.instance.FactionsApproval(loadedDialogue.faction,
             loadedDialogue.dialogueOptions[index].changeApproval);
 
 
