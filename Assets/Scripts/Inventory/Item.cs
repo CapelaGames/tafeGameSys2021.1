@@ -17,8 +17,10 @@ public class Item
         Quest,
         Money
     }
+
+
     #region Private variables
-    [SerializeField] private string name; //Item's ID
+    [SerializeField] private string name;//Item's ID
     [SerializeField] private string description;
     [SerializeField] private int value;
     [SerializeField] private int amount;
@@ -31,12 +33,12 @@ public class Item
     #endregion
 
     #region Public properties
+
     public string Name
     {
         get { return name; }
         set { name = value; }
     }
-
     public string Description
     {
         get { return description; }
@@ -91,6 +93,7 @@ public class Item
         set { heal = value; }
     }
     #endregion
+
     public Item()
     {
 
