@@ -109,4 +109,6 @@ public class Item
         Armour      = copyItem.Armour;
         Heal        = copyItem.Heal;
     }
+
+    public virtual void OnClicked() => Debug.Log($"Item pressed was: {name}!");
 }

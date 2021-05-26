@@ -14,6 +14,17 @@ public class Inventory : MonoBehaviour
     private string sortType = "All";
     #endregion
 
+    public void AddItem(Item _item)
+    {
+        inventory.Add(_item);
+    }
+
+    public void RemoveItem(Item _item)
+    {
+        if(inventory.Contains(_item))
+            inventory.Remove(_item);
+    }
+
     private void OnGUI()
     {
         if (showInventory)
@@ -75,6 +86,7 @@ public class Inventory : MonoBehaviour
                 if (GUI.Button(new Rect(30, 0 + (count * 30), 200, 30), inventory[i].Name))
                 {
                     selectedItem = inventory[i];
+                    selectedItem.OnClicked();
                 }
                 count++;
             }
