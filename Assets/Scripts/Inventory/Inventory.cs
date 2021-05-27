@@ -7,9 +7,9 @@ using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private List<Item> inventory = new List<Item>();
+    [SerializeField] private List<Item> inventory = new List<Item>();//-------
     [SerializeField] private bool showIMGUIInventory = true;
-    private Item selectedItem = null;
+    [HideInInspector] public Item selectedItem = null;//-------
 
     #region Canvas Inventory
     [SerializeField] private Button ButtonPrefab;
@@ -39,10 +39,41 @@ public class Inventory : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I))
         {
+            if (InventoryGameObject.activeSelf)
+            {
+             InventoryGameObject.SetActive(false);
+            }
+            else
+            {
             InventoryGameObject.SetActive(true);
             DisplayItemsCanvas();
+            }
         }
     }
+    public void AddItemToInventory(Item item)
+    {
+        AddItemToInventory(item, item.Amount);
+    }
+    public void AddItemToInventory(Item item, int count)
+    {
+        Item foundItem = inventory.Find((x) => x.Name == item.Name);
+
+        if(foundItem == null)
+        {
+            inventory.Add(item);
+        }
+        else
+        {
+            foundItem.Amount += count;
+        }
+        DisplayItemsCanvas();
+    }
+    public void RemoveItemFromInventory(Item item)
+    {
+        inventory.Remove(item);
+        DisplayItemsCanvas();
+    }
+
     private void DisplayFiltersCanvas()
     {
         List<string> itemTypes = new List<string>(Enum.GetNames(typeof(Item.ItemType)));
