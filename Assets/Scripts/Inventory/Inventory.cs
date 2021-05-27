@@ -16,7 +16,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject InventoryGameObject;
     [SerializeField] private GameObject InventoryContent;
     [SerializeField] private GameObject FilterContent;
+
+    [Header("Selected Item Display")]
+    [SerializeField] private RawImage itemImage;
+    [SerializeField] private Text itemName;
+    [SerializeField] private Text ItemDescription;
     #endregion
+
+
 
     #region Display Inventory
     private Vector2 scrollPosition;
@@ -26,7 +33,7 @@ public class Inventory : MonoBehaviour
     #region now copy this
     private void Start()
     {
-        //DisplayFiltersCanvas();
+        DisplayFiltersCanvas();
     }
     private void Update()
     {
@@ -48,9 +55,9 @@ public class Inventory : MonoBehaviour
             buttonGO.name = itemTypes[i] + " filter";
             buttonText.text = itemTypes[i];
 
-            //int x = i;
+            int x = i;
             //buttonGO.onClick.AddListener(() => { sortType = itemTypes[x];});
-            buttonGO.onClick.AddListener(delegate { ChangeFilter(itemTypes[i]); });
+            buttonGO.onClick.AddListener(delegate { ChangeFilter(itemTypes[x]); });
         }
     }
     private void ChangeFilter(string itemType)
@@ -62,12 +69,12 @@ public class Inventory : MonoBehaviour
     {
         foreach(Transform child in parent)
         {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
     }
     private void DisplayItemsCanvas()
     {
-        //DestroyAllChildren(InventoryContent.transform);
+        DestroyAllChildren(InventoryContent.transform);
         for (int i = 0; i < inventory.Count; i++)
         {
             if (inventory[i].Type.ToString() == sortType || sortType == "All")
@@ -77,9 +84,23 @@ public class Inventory : MonoBehaviour
                 buttonGO.name = inventory[i].Name + " button";
                 buttonText.text = inventory[i].Name;
 
+                int x = i;
+                buttonGO.onClick.AddListener(delegate { DisplaySelectedItemOnCanvas(inventory[x]);});
             }
         }
     }
+    void DisplaySelectedItemOnCanvas(Item item)
+    {
+        selectedItem = item;
+
+        itemImage.texture = selectedItem.Icon;// Sprite.Create(selectedItem.Icon, itemImage.rectTransform.rect, Vector2.zero);
+        itemName.text = selectedItem.Name;
+        ItemDescription.text = selectedItem.Description +
+                    "\nValue: " + selectedItem.Value +
+                    "\nAmount: " + selectedItem.Amount;
+    }
+
+
     #endregion
     private void OnGUI()
     {
