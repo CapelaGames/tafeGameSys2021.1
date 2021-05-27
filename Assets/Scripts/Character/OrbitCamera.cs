@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//https://catlikecoding.com/unity/tutorials/movement/orbit-camera/
 
 [RequireComponent(typeof(Camera))]  //makes sure the object jhas camera
 
