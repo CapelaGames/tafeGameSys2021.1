@@ -129,11 +129,20 @@ public class Inventory : MonoBehaviour
     {
         selectedItem = item;
 
-        itemImage.texture = selectedItem.Icon;
-        itemName.text = selectedItem.Name;
-        ItemDescription.text = selectedItem.Description +
-                    "\nValue: " + selectedItem.Value +
-                    "\nAmount: " + selectedItem.Amount;
+        if (item == null)
+        {
+            itemImage.texture = null;
+            itemName.text = "";
+            ItemDescription.text = "";
+        }
+        else
+        {
+            itemImage.texture = selectedItem.Icon;
+            itemName.text = selectedItem.Name;
+            ItemDescription.text = selectedItem.Description +
+                        "\nValue: " + selectedItem.Value +
+                        "\nAmount: " + selectedItem.Amount;
+        }
     }
     #endregion
 
